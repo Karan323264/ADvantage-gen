@@ -1,13 +1,30 @@
+import { Routes, Route } from "react-router-dom";
+import LandingPage from "./features/landing/LandingPage";
+import DashboardPage from "./features/dashboard/DashBoardPage";
+import CampaignHistory from "./features/dashboard/CampaignHistory";
+import PrivateLayout from "./components/layout/PrivateLayout";
+import ProtectedRoute from "./components/layout/ProtectedRoute";
+
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-200">
-        <h1 className="text-2xl font-semibold">AdVantage Gen</h1>
-        <p className="text-gray-500 mt-2">
-          AI Social Media Campaign Generator
-        </p>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+
+      {/* Dashboard */}
+      <Route element={<PrivateLayout />}>
+        <Route path="/dashboard" element={<DashboardPage />} />
+      </Route>
+
+      {/* History */}
+      <Route
+        path="/dashboard/history"
+        element={
+          <ProtectedRoute>
+            <CampaignHistory />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
   );
 }
 
