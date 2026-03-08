@@ -40,7 +40,7 @@ Users can also **edit the generated image in the frontend editor and upload the 
 - Vite
 - Axios
 - Context API
-- CSS
+- Tailwind css
 
 ---
 
