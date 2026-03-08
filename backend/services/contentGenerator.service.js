@@ -1,3 +1,9 @@
+/**
+ * content generator service layer responsible for taking the user raw 
+ * prompt as input for groq llm to generate enhanced prompts
+ * prompt engineering is done in such a way that captions and hashtags
+ * will be generated according to the tone and platform the user wishes to use
+ */
 import { callGroq } from "./groq.client.js";
 import { extractJSON, validateCampaignStructure } from "../utils/jsonValidator.js";
 
@@ -113,7 +119,7 @@ Return strictly in this JSON format:
 
   if (validateCampaignStructure(parsed)) {
 
-    // Deterministic backend filtering
+    // Deterministic backend filtering with respect to platform (platform return objects)
     if (!platforms.includes("Instagram")) {
       parsed.hashtags.Instagram = [];
     }
